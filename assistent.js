@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const doc = document.querySelector('#doc');
 	const sender = document.querySelector('#sender');
 	//const add_doc = document.querySelector('#add_doc');
-	const create = document.querySelector('#create');
+	//const create = document.querySelector('#create');
 	const sub = document.querySelector('#sub');
 	//const html_string = document.querySelector('#html_string');
 			
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	arti.addEventListener('input', ArtiInput);
 	comment.addEventListener('input', CommentInput);
 	//add_doc.addEventListener('click', AddDocClick);	
-	create.addEventListener('click', CreateClick);
+	//create.addEventListener('click', CreateClick);
 	sub.addEventListener('click', SubClick);
 	
 	function buildHTML () {
@@ -132,23 +132,23 @@ document.addEventListener('DOMContentLoaded', function () {
 //		alert ("Diese Funktion ist leider noch nicht einsatzbereit....");	
 //	}
 	
-	function CreateClick () {
+	// function CreateClick () {
 				
-		if (cat1.selectedIndex == 0) alert ("Bitte wähle eine Kategorie!");
-		else if ((cat1.selectedIndex == 1 || cat1.selectedIndex == 2 || cat1.selectedIndex == 5) && cat2.selectedIndex == 0) alert ("Bitte wähle eine Unterkategorie!");
-		else if (header.value == "") alert ("Bitte gib eine Überschrift an!");
-		else if (arti.value == "") alert ("Bitte gib einen Beitrag ein!");
-		else {
-			let t = '<!DOCTYPE html><html lang="de"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />';
-			t = "<title>" + escapeHtml(header.value) + "</title></head><body>"
-			t = t + buildHTML();
-			t = t + "</body></html>";
+	// 	if (cat1.selectedIndex == 0) alert ("Bitte wähle eine Kategorie!");
+	// 	else if ((cat1.selectedIndex == 1 || cat1.selectedIndex == 2 || cat1.selectedIndex == 5) && cat2.selectedIndex == 0) alert ("Bitte wähle eine Unterkategorie!");
+	// 	else if (header.value == "") alert ("Bitte gib eine Überschrift an!");
+	// 	else if (arti.value == "") alert ("Bitte gib einen Beitrag ein!");
+	// 	else {
+	// 		let t = '<!DOCTYPE html><html lang="de"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />';
+	// 		t = "<title>" + escapeHtml(header.value) + "</title></head><body>"
+	// 		t = t + buildHTML();
+	// 		t = t + "</body></html>";
 			
-			let w = window.open("about:blank", "Artikel");
-			w.document.write(t);
-			w.focus();
-		}
-	}
+	// 		let w = window.open("about:blank", "Artikel");
+	// 		w.document.write(t);
+	// 		w.focus();
+	// 	}
+	// }
 	
 	function SubClick () {
 				
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		else if (header.value == "") alert ("Bitte gib eine Überschrift an!");
 		else if (arti.value == "") alert ("Bitte gib einen Beitrag ein!");
 		else {
-//			html_string.value = buildHTML();
+			html_string.value = buildHTML();
 			art.submit();
 		}
 	}
