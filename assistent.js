@@ -19,12 +19,12 @@ document.addEventListener('DOMContentLoaded', function () {
 	const cnt_arti = document.querySelector('#cnt_arti');
 	const comment = document.querySelector('#comment');
 	const cnt_comment = document.querySelector('#cnt_comment');	
-	const doc = document.querySelector('#doc');
-	const sender = document.querySelector('#sender');
+	//const doc = document.querySelector('#doc');
+	//const sender = document.querySelector('#sender');
 	//const add_doc = document.querySelector('#add_doc');
 	//const create = document.querySelector('#create');
 	const sub = document.querySelector('#sub');
-	const html_string = document.querySelector('#html_string');
+	//const html_string = document.querySelector('#html_string');
 			
 	cat1.addEventListener('change', SetCat2Options);
 	arti.addEventListener('input', ArtiInput);
@@ -33,23 +33,23 @@ document.addEventListener('DOMContentLoaded', function () {
 	//create.addEventListener('click', CreateClick);
 	sub.addEventListener('click', SubClick);
 	
-	function buildHTML () {
-			let t = "<h2>" + escapeHtml(cat1.value) + "</h2>";
-			if (cat1.selectedIndex == 1 || cat1.selectedIndex == 2 || cat1.selectedIndex == 5) t = t + "<h3>" + escapeHtml(cat2.value) + "</h3>";
-			t = t + "<h1>" + escapeHtml(header.value) + "</h1>";
-			t = t + "<p>" + escapeHtml(arti.value) + "</p>";
-			if (comment.value != "") {
-				t = t + '<p style="font-style:italic"><span style="font-weight:bold">Anmerkung der Redaktion:</span> ' + escapeHtml(comment.value) + '</p>';
-			}
-			if (doc.value != "") {
-				t = t + "<p>Dokument:</p>";
-				t = t + "<p>" + escapeHtml(doc.value) + " (Dokument Nr. XXXX)</p>";
-				if (sender.value != "") {
-					t = t + '<p><span style="font-weight:bold">Einsender*in:</span> ' + escapeHtml(sender.value) + '</p>';
-				}
-			}
-			return t;
-	}
+	// function buildHTML () {
+	// 		let t = "<h2>" + escapeHtml(cat1.value) + "</h2>";
+	// 		if (cat1.selectedIndex == 1 || cat1.selectedIndex == 2 || cat1.selectedIndex == 5) t = t + "<h3>" + escapeHtml(cat2.value) + "</h3>";
+	// 		t = t + "<h1>" + escapeHtml(header.value) + "</h1>";
+	// 		t = t + "<p>" + escapeHtml(arti.value) + "</p>";
+	// 		if (comment.value != "") {
+	// 			t = t + '<p style="font-style:italic"><span style="font-weight:bold">Anmerkung der Redaktion:</span> ' + escapeHtml(comment.value) + '</p>';
+	// 		}
+	// 		if (doc.value != "") {
+	// 			t = t + "<p>Dokument:</p>";
+	// 			t = t + "<p>" + escapeHtml(doc.value) + " (Dokument Nr. XXXX)</p>";
+	// 			if (sender.value != "") {
+	// 				t = t + '<p><span style="font-weight:bold">Einsender*in:</span> ' + escapeHtml(sender.value) + '</p>';
+	// 			}
+	// 		}
+	// 		return t;
+	// }
 
 	function SetCat2Options () {
 		cat2.length = 0;
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				cat2.options[5] = new Option ("Aufenthaltsbeendigung");
 				cat2.options[6] = new Option ("Abschiebungshaft");
 				cat2.options[7] = new Option ("Einreise- und Aufenthaltsverbot");
-				cat2.options[8] = new Option ("Irregulärer Aufenthalt");
+				cat2.options[8] = new Option ("Prekärer Aufenthalt");
 				cat2.options[9] = new Option ("Freizügigkeitsrecht");
 				cat2.options[10] = new Option ("Prozessrecht");
 				cat2.options[11] = new Option ("Unionsrecht");				
@@ -150,8 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	// 	}
 	// }
 	
-	function SubClick () {
-				
+	function SubClick () {				
 		if (cat1.selectedIndex == 0) alert ("Bitte wähle eine Kategorie!");
 		else if ((cat1.selectedIndex == 1 || cat1.selectedIndex == 2 || cat1.selectedIndex == 5) && cat2.selectedIndex == 0) alert ("Bitte wähle eine Unterkategorie!");
 		else if (header.value == "") alert ("Bitte gib eine Überschrift an!");
