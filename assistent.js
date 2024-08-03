@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	//const add_doc = document.querySelector('#add_doc');
 	//const create = document.querySelector('#create');
 	const sub = document.querySelector('#sub');
-	//const html_string = document.querySelector('#html_string');
+	const html_string = document.querySelector('#html_string');
 			
 	cat1.addEventListener('change', SetCat2Options);
 	arti.addEventListener('input', ArtiInput);

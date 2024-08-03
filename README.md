@@ -10,7 +10,17 @@ Kleines Tool, das dabei hilft, die redaktionellen Vorgaben für Artikel in der [
 
 ## Installation
 
-tbd
+Benötigt werden ein Webserver mit funktionsfähigem PHP. Um die Abhängigkeiten zu installieren, ist ein
+
+```console
+composer update
+````
+
+auszuführen. Falls php nicht auf composer zugreifen können sollte, weil es nicht in open_basedir enthalten sein sollte, hilft möglicherweise:
+
+```console
+php -d open_basedir="" /usr/bin/composer install
+```
 
 ## License
 
