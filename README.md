@@ -19,7 +19,7 @@ $ composer update
 auszuführen. Falls php nicht auf composer zugreifen können sollte, weil es nicht in open_basedir enthalten sein sollte, hilft möglicherweise:
 
 ```console
-$ php -d open_basedir="" /usr/bin/composer install
+$ php -d open_basedir="" /usr/bin/composer update
 ```
 
 ## License
