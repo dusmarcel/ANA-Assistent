@@ -6,7 +6,7 @@ $doc = new \PhpOffice\PhpWord\PhpWord();
 $doc->getSettings()->setThemeFontLang(new Language(Language::DE_DE));
 
 $cat1 = htmlspecialchars($_POST['cat1']);
-$cat2 = htmlspecialchars($_POST['cat2']);
+$cat2 = ""; // Set only if required htmlspecialchars($_POST['cat2']);
 $header = htmlspecialchars($_POST['header']);
 $arti = htmlspecialchars($_POST['arti']);
 $comment = htmlspecialchars($_POST['comment']);
@@ -18,6 +18,7 @@ $section->addText($cat1, array('name' => 'Tahoma', 'size' => 20));
 $section->addText('');
 
 if (strcmp($cat1, 'Asylrecht und internationaler Schutz') == 0 || strcmp($cat1, 'Aufenthaltsrecht') == 0 || strcmp($cat1, 'Anwaltspraxis') == 0) {
+	$cat2 = htmlspecialchars($_POST['cat2']);
 	$section->addText($cat2, array('name' => 'Tahoma', 'size' => 16));
 	$section->addText();
 }
