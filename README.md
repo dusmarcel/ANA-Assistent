@@ -10,7 +10,7 @@ Kleines Tool, das dabei hilft, die redaktionellen Vorgaben für Artikel in der [
 
 ## Installation
 
-Benötigt wird ein Webserver mit funktionsfähigem PHP. Um die Abhängigkeiten zu installieren, ist ein
+Benötigt wird ein Webserver mit funktionierendem PHP. Um die Abhängigkeiten zu installieren, ist ein
 
 ```console
 $ composer update
