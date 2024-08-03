@@ -156,8 +156,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		else if ((cat1.selectedIndex == 1 || cat1.selectedIndex == 2 || cat1.selectedIndex == 5) && cat2.selectedIndex == 0) alert ("Bitte wähle eine Unterkategorie!");
 		else if (header.value == "") alert ("Bitte gib eine Überschrift an!");
 		else if (arti.value == "") alert ("Bitte gib einen Beitrag ein!");
-		else {
-			art.submit();
-		}
+		else art.submit();
 	}
 });
