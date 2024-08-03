@@ -157,7 +157,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		else if (header.value == "") alert ("Bitte gib eine Überschrift an!");
 		else if (arti.value == "") alert ("Bitte gib einen Beitrag ein!");
 		else {
-			html_string.value = buildHTML();
 			art.submit();
 		}
 	}
