@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ANA Artikel-Assistent</title>
+	<script src="./assistent.js"></script>
+  </head>
+  <body>
+	<form id="art" action="./assistent.php" method="post">
+		<p>
+			<label>1. Bitte wähle eine Kategorie:</label>
+			<select id="cat1" name="cat1" size="1">
+				<option>Bitte wählen</option>
+				<option>Asylrecht und internationaler Schutz</option>
+				<option>Aufenthaltsrecht</option>
+				<option>Migrationssozialrecht</option>
+				<option>Staatsangehörigkeitsrecht</option>
+				<option>Anwaltspraxis</option>
+				<option>Das Schlaglicht</option>
+			</select>
+		</p>
+		<p>
+			<label>2. Bitte wähle eine Unterkategorie. Überspringe diesen Schritt, wenn du als Kategorie Migrationssozialrecht, Staatsangehörigkeitsrecht oder Das Schlaglicht gewählt hast:</label>
+			<select id="cat2" name="cat2" size="1">
+				<option>Bitte wählen</option>
+			</select>
+		</p>
+		<p>
+			<label>3. Bitte wähle eine Überschrift für deinen Artikel:</label>
+		</p>
+		<p>
+			<input type="text" id="header" name="header" size="120" />
+		</p>
+		<p>
+			<label>4. Hier bitte den Beitrag angeben. Länge: Zusammenfassung eines Urteils: 750 Zeichen, Editoral: 2.100 Zeichen, Leitartikel: 10.000 Zeichen:</label>
+		</p>
+		<p>
+			<textarea id="arti" name="arti" rows="8" cols="120"></textarea>
+		</p>
+		<p>
+			<label id="cnt_arti">0 Zeichen</label>
+		</p>
+		<p>
+			<label>5. Hier ggf. eine Anmerkung eingeben (max. 1.250 Zeichen). Falls keine Anmerkung gemacht werden soll, einfach leer lassen.</label>
+		</p>
+		<p>
+			<textarea id="comment" name="comment" rows="16" cols="120"></textarea>
+		</p>
+		<p>
+			<label id="cnt_comment">0 Zeichen</label>
+		</p>
+		<p>
+			<label>6. Hier ggf. Dokument angeben; falls kein Dokument angegeben werden soll, einfach leer lassen. Dokumente bitte immer in folgender Form angeben: Gericht Ort, U (Urteil) oder B (Beschluss) v. Datum, Az; Beispiel: VG Köln, U. v. 01.04.2021, 4 A 1546/19</label>
+		</p>
+		<p>
+			<input type="text" id="doc" name="dox" size="160" />
+		</p>
+		<p>
+			<label>7. Hier ggf. Einsender*in eingeben; falls kein*e Einsender*in angegeben werden soll, einfach leer lassen. Das Feld wird nur ausgewertet, wenn ein Dokument angegeben wurde.</label>
+		</p>
+		<p>
+			<input type="text" id="sender" name="sender" size="160" />
+		</p>
+		<p>
+			<label>8. Hier wird ggf. noch eine Funktion eingebaut, die es ermöglichen soll, mehr als ein Dokument nebst Einsender*in anzugeben.<!--Falls weitere Dokumente angegeben werden sollen, hier klicken:--></label>
+			<!--<button type="button" id="add_doc">Zusätzliches Dokument</button>-->
+		<p>
+			<label>9. Alles fertig? Dann kannst du hier mit einem Klick in einem neuen Fenster eine Vorschau auf den fertigen Artikel erstellen.</label>
+			<button type="button" id="create">Vorschau</button>
+		</p>
+		<p>
+			<!--<input type="hidden" id="html_string" name="html_string" />-->
+			<label>10. Wirklich alles fertig? Dann kannst du hier mit einem Klick eine docx-Datei aus deinem Artikel erzeugen und herunterladen.</label>
+			<button type="button" id="sub">Auf geht's!</button>
+		</p>
+	</form>
+  </body>
+</html>
