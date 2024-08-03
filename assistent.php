@@ -6,7 +6,7 @@ $doc = new \PhpOffice\PhpWord\PhpWord();
 $doc->getSettings()->setThemeFontLang(new Language(Language::DE_DE));
 
 $cat1 = htmlspecialchars($_POST['cat1']);
-$cat2 = ""; // Set only if required htmlspecialchars($_POST['cat2']);
+$cat2 = ""; // Set only if required
 $header = htmlspecialchars($_POST['header']);
 $arti = htmlspecialchars($_POST['arti']);
 $comment = htmlspecialchars($_POST['comment']);
