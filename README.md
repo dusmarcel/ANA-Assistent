@@ -1,6 +1,6 @@
 <div align="center">
 
-  <h1><code>ANA Assisten</code></h1>
+  <h1><code>ANA Assistent</code></h1>
 
 </div>
 
