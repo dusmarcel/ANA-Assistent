@@ -6,7 +6,7 @@
 
 ## About
 
-Kleines Tool, das dabei hilft, die redaktionellen Vorgaben für Artikel in der [ANA-ZAR|https://dav-migrationsrecht.de/de/ana-zar] einzuhalten. Die ANA-ZAR sind die „Anwaltsnachrichten in der Zeitrschrift für Ausländerrecht und Ausländerpolitik“. Es handelt sich um Mitgliederzeitschrift der Arbeitsgemeinschaft Ausländerrecht im Deutschen Anwaltverein, die als Beilage in der ZAR in einer Printfassung und zudem auch frei zugänglich online als PDF-Datei veröffentlicht wird.
+Kleines Tool, das dabei hilft, die redaktionellen Vorgaben für Artikel in der [ANA-ZAR](https://dav-migrationsrecht.de/de/ana-zar) einzuhalten. Die ANA-ZAR sind die „Anwaltsnachrichten in der Zeitrschrift für Ausländerrecht und Ausländerpolitik“. Es handelt sich um Mitgliederzeitschrift der Arbeitsgemeinschaft Ausländerrecht im Deutschen Anwaltverein, die als Beilage in der ZAR in einer Printfassung und zudem auch frei zugänglich online als PDF-Datei veröffentlicht wird.
 
 ## Installation
 
