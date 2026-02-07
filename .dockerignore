@@ -1,0 +1,10 @@
+.git
+.gitignore
+.idea
+.vscode
+node_modules
+vendor
+*.log
+*.tmp
+.DS_Store
+artikel.docx
