@@ -212,7 +212,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		}
 	}
-
 	
 	function SubClick () {				
 		if (cat1.selectedIndex == 0) alert ("Bitte wähle eine Kategorie!");
