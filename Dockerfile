@@ -9,7 +9,8 @@ WORKDIR /var/www/html
 
 # Tools required for Composer dist/source installs
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends unzip git \
+    && apt-get install -y --no-install-recommends unzip git libzip-dev \
+    && docker-php-ext-install zip \
     && rm -rf /var/lib/apt/lists/*
 
 # Install PHP dependencies

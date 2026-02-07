@@ -51,16 +51,21 @@
 			<label id="cnt_comment">0 Zeichen</label>
 		</p>
 		<p>
-			<label>6. Hier ggf. Dokument angeben; falls kein Dokument angegeben werden soll, einfach leer lassen. Dokumente bitte immer in folgender Form angeben: Gericht Ort, U (Urteil) oder B (Beschluss) v. Datum, Az; Beispiel: VG Köln, U. v. 01.04.2021, 4 A 1546/19</label>
+			<label>6. Hier ggf. Dokument(e) angeben; falls kein Dokument angegeben werden soll, einfach leer lassen. Dokumente bitte immer in folgender Form angeben: Gericht Ort, U (Urteil) oder B (Beschluss) v. Datum, Az; Beispiel: VG Köln, U. v. 01.04.2021, 4 A 1546/19</label>
 		</p>
+		<div id="docs">
+			<p class="doc-row">
+				<input type="text" name="dox[]" size="160" placeholder="Dokument" />
+				<select name="sender_label[]">
+					<option value="Einsender*in" selected>Einsender*in</option>
+					<option value="Einsenderin">Einsenderin</option>
+					<option value="Einsender">Einsender</option>
+				</select>
+				<input type="text" name="sender[]" size="80" placeholder="Einsender*in (optional)" />
+			</p>
+		</div>
 		<p>
-			<input type="text" id="doc" name="dox" size="160" />
-		</p>
-		<p>
-			<label>7. Hier ggf. Einsender*in eingeben; falls kein*e Einsender*in angegeben werden soll, einfach leer lassen. Das Feld wird nur ausgewertet, wenn ein Dokument angegeben wurde.</label>
-		</p>
-		<p>
-			<input type="text" id="sender" name="sender" size="160" />
+			<button type="button" id="add_doc">Weiteres Dokument hinzufügen</button>
 		</p>
 		<p>
 			<label>8. Alles fertig? Dann kannst du hier mit einem Klick eine docx-Datei aus deinem Artikel erzeugen und herunterladen.</label>

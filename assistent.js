@@ -19,9 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	const cnt_arti = document.querySelector('#cnt_arti');
 	const comment = document.querySelector('#comment');
 	const cnt_comment = document.querySelector('#cnt_comment');	
-	//const doc = document.querySelector('#doc');
-	//const sender = document.querySelector('#sender');
-	//const add_doc = document.querySelector('#add_doc');
+	const docs = document.querySelector('#docs');
+	const add_doc = document.querySelector('#add_doc');
 	//const create = document.querySelector('#create');
 	const sub = document.querySelector('#sub');
 	//const html_string = document.querySelector('#html_string');
@@ -29,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	cat1.addEventListener('change', SetCat2Options);
 	arti.addEventListener('input', ArtiInput);
 	comment.addEventListener('input', CommentInput);
-	//add_doc.addEventListener('click', AddDocClick);	
+	add_doc.addEventListener('click', AddDocClick);	
 	//create.addEventListener('click', CreateClick);
 	sub.addEventListener('click', SubClick);
 	
@@ -127,10 +126,25 @@ document.addEventListener('DOMContentLoaded', function () {
 		}		
 	}
 	
-//	function AddDocClick () {
-//		
-//		alert ("Diese Funktion ist leider noch nicht einsatzbereit....");	
-//	}
+	function AddDocClick () {
+		const row = document.createElement('p');
+		row.className = 'doc-row';
+		row.innerHTML = '<input type="text" name="dox[]" size="160" placeholder="Dokument" /> ' +
+			'<select name="sender_label[]">' +
+				'<option value="Einsender*in" selected>Einsender*in</option>' +
+				'<option value="Einsenderin">Einsenderin</option>' +
+				'<option value="Einsender">Einsender</option>' +
+			'</select> ' +
+			'<input type="text" name="sender[]" size="80" placeholder="Einsender*in (optional)" /> ' +
+			'<button type="button" class="remove-doc">Entfernen</button>';
+		docs.appendChild(row);
+	}
+
+	docs.addEventListener('click', function (event) {
+		if (event.target && event.target.classList.contains('remove-doc')) {
+			event.target.parentElement.remove();
+		}
+	});
 	
 	// function CreateClick () {
 				
