@@ -9,6 +9,24 @@ function post_string($key) {
 	return isset($_POST[$key]) && $_POST[$key] !== null ? htmlspecialchars($_POST[$key]) : '';
 }
 
+function post_raw($key) {
+	return isset($_POST[$key]) && $_POST[$key] !== null ? $_POST[$key] : '';
+}
+
+function make_slug($text) {
+	$slug = trim($text);
+	if (function_exists('iconv')) {
+		$slug = iconv('UTF-8', 'ASCII//TRANSLIT', $slug);
+	}
+	$slug = strtolower($slug);
+	$slug = preg_replace('/[^a-z0-9]+/', '-', $slug);
+	$slug = trim($slug, '-');
+	if ($slug === '') {
+		$slug = 'artikel';
+	}
+	return $slug;
+}
+
 function post_string_list($key) {
 	if (!isset($_POST[$key]) || !is_array($_POST[$key])) {
 		return array();
@@ -22,6 +40,7 @@ function post_string_list($key) {
 
 $cat1 = post_string('cat1');
 $cat2 = ""; // Set only if required
+$header_raw = post_raw('header');
 $header = post_string('header');
 $arti = post_string('arti');
 $comment = post_string('comment');
@@ -85,10 +104,23 @@ if (count($dox_list) > 0) {
 	}
 }
 
-$objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($doc, 'Word2007');
-$objWriter->save('artikel.docx');
+$objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($doc, 'ODText');
 
-header("Content-Type: application/octet-stream");
-header("Content-Disposition: attachment;filename=\"artikel.docx\"");
-header("Location: artikel.docx");
+$base = make_slug($header_raw);
+try {
+	$rand = bin2hex(random_bytes(4));
+} catch (Exception $e) {
+	$rand = uniqid();
+}
+$filename = $base . '-' . $rand . '.odt';
+$tmpdir = rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR);
+$filepath = $tmpdir . DIRECTORY_SEPARATOR . $filename;
+
+$objWriter->save($filepath);
+
+header("Content-Type: application/vnd.oasis.opendocument.text");
+header("Content-Disposition: attachment;filename=\"" . $filename . "\"");
+header("Content-Length: " . filesize($filepath));
+readfile($filepath);
+exit;
 ?>
