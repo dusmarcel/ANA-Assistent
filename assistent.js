@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const cnt_comment = document.querySelector('#cnt_comment');	
 	const docs = document.querySelector('#docs');
 	const add_doc = document.querySelector('#add_doc');
+	const preview = document.querySelector('#preview');
 	//const create = document.querySelector('#create');
 	const sub = document.querySelector('#sub');
 	//const html_string = document.querySelector('#html_string');
@@ -29,26 +30,76 @@ document.addEventListener('DOMContentLoaded', function () {
 	arti.addEventListener('input', ArtiInput);
 	comment.addEventListener('input', CommentInput);
 	add_doc.addEventListener('click', AddDocClick);	
-	//create.addEventListener('click', CreateClick);
+	preview.addEventListener('click', PreviewClick);
 	sub.addEventListener('click', SubClick);
-	
-	// function buildHTML () {
-	// 		let t = "<h2>" + escapeHtml(cat1.value) + "</h2>";
-	// 		if (cat1.selectedIndex == 1 || cat1.selectedIndex == 2 || cat1.selectedIndex == 5) t = t + "<h3>" + escapeHtml(cat2.value) + "</h3>";
-	// 		t = t + "<h1>" + escapeHtml(header.value) + "</h1>";
-	// 		t = t + "<p>" + escapeHtml(arti.value) + "</p>";
-	// 		if (comment.value != "") {
-	// 			t = t + '<p style="font-style:italic"><span style="font-weight:bold">Anmerkung der Redaktion:</span> ' + escapeHtml(comment.value) + '</p>';
-	// 		}
-	// 		if (doc.value != "") {
-	// 			t = t + "<p>Dokument:</p>";
-	// 			t = t + "<p>" + escapeHtml(doc.value) + " (Dokument Nr. XXXX)</p>";
-	// 			if (sender.value != "") {
-	// 				t = t + '<p><span style="font-weight:bold">Einsender*in:</span> ' + escapeHtml(sender.value) + '</p>';
-	// 			}
-	// 		}
-	// 		return t;
-	// }
+
+	function buildDocRows () {
+		const rows = [];
+		const nodes = docs.querySelectorAll('.doc-row');
+		nodes.forEach(function (row) {
+			const dox = row.querySelector('input[name="dox[]"]');
+			const senderLabel = row.querySelector('select[name="sender_label[]"]');
+			const sender = row.querySelector('input[name="sender[]"]');
+			const doxValue = dox ? dox.value.trim() : '';
+			const senderValue = sender ? sender.value.trim() : '';
+			const labelValue = senderLabel ? senderLabel.value : 'Einsender*in';
+			if (doxValue !== '') {
+				rows.push({
+					dox: doxValue,
+					sender: senderValue,
+					label: labelValue
+				});
+			}
+		});
+		return rows;
+	}
+
+	function buildHTML () {
+		let t = '<!DOCTYPE html><html lang="de"><head><meta charset="utf-8" />' +
+			'<meta name="viewport" content="width=device-width, initial-scale=1.0" />' +
+			'<title>Vorschau</title>' +
+			'<style>' +
+			'body{font-family:"Times New Roman",Times,serif;margin:24px;line-height:1.35;color:#111}' +
+			'h1{font-size:14pt;font-weight:bold;margin:0 0 10px 0}' +
+			'h2{font-family:Tahoma,Arial,sans-serif;font-size:20pt;margin:0 0 10px 0}' +
+			'h3{font-family:Tahoma,Arial,sans-serif;font-size:16pt;margin:0 0 10px 0}' +
+			'p{font-size:12pt;margin:0 0 10px 0;white-space:pre-wrap}' +
+			'.italic{font-style:italic}' +
+			'.bold{font-weight:bold}' +
+			'</style></head><body>';
+
+		t += '<h2>' + escapeHtml(cat1.value) + '</h2>';
+		if (cat1.selectedIndex == 1 || cat1.selectedIndex == 2 || cat1.selectedIndex == 5) {
+			t += '<h3>' + escapeHtml(cat2.value) + '</h3>';
+		}
+		t += '<h1>' + escapeHtml(header.value) + '</h1>';
+		t += '<p>' + escapeHtml(arti.value) + '</p>';
+
+		if (comment.value != '') {
+			t += '<p class="italic"><span class="bold">Anmerkung der Redaktion: </span>' + escapeHtml(comment.value) + '</p>';
+		}
+
+		const docRows = buildDocRows();
+		if (docRows.length === 1) {
+			t += '<p class="italic bold">Dokument:</p>';
+			t += '<p class="italic">' + escapeHtml(docRows[0].dox) + ' (Dokument Nr. xxxx)</p>';
+			if (docRows[0].sender !== '') {
+				t += '<p class="italic">' + escapeHtml(docRows[0].label) + ': ' + escapeHtml(docRows[0].sender) + '</p>';
+			}
+		} else if (docRows.length > 1) {
+			t += '<p class="italic bold">Dokumente:</p>';
+			for (let i = 0; i < docRows.length; i++) {
+				const suffix = String.fromCharCode('a'.charCodeAt(0) + i);
+				t += '<p class="italic">' + escapeHtml(docRows[i].dox) + ' (Dokument Nr. xxxx' + suffix + ')</p>';
+				if (docRows[i].sender !== '') {
+					t += '<p class="italic">' + escapeHtml(docRows[i].label) + ': ' + escapeHtml(docRows[i].sender) + '</p>';
+				}
+			}
+		}
+
+		t += '</body></html>';
+		return t;
+	}
 
 	function SetCat2Options () {
 		cat2.length = 0;
@@ -146,23 +197,21 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	});
 	
-	// function CreateClick () {
-				
-	// 	if (cat1.selectedIndex == 0) alert ("Bitte wähle eine Kategorie!");
-	// 	else if ((cat1.selectedIndex == 1 || cat1.selectedIndex == 2 || cat1.selectedIndex == 5) && cat2.selectedIndex == 0) alert ("Bitte wähle eine Unterkategorie!");
-	// 	else if (header.value == "") alert ("Bitte gib eine Überschrift an!");
-	// 	else if (arti.value == "") alert ("Bitte gib einen Beitrag ein!");
-	// 	else {
-	// 		let t = '<!DOCTYPE html><html lang="de"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />';
-	// 		t = "<title>" + escapeHtml(header.value) + "</title></head><body>"
-	// 		t = t + buildHTML();
-	// 		t = t + "</body></html>";
-			
-	// 		let w = window.open("about:blank", "Artikel");
-	// 		w.document.write(t);
-	// 		w.focus();
-	// 	}
-	// }
+	function PreviewClick () {
+		if (cat1.selectedIndex == 0) alert ("Bitte wähle eine Kategorie!");
+		else if ((cat1.selectedIndex == 1 || cat1.selectedIndex == 2 || cat1.selectedIndex == 5) && cat2.selectedIndex == 0) alert ("Bitte wähle eine Unterkategorie!");
+		else if (header.value == "") alert ("Bitte gib eine Überschrift an!");
+		else if (arti.value == "") alert ("Bitte gib einen Beitrag ein!");
+		else {
+			const t = buildHTML();
+			const w = window.open("about:blank", "Vorschau");
+			if (w) {
+				w.document.write(t);
+				w.document.close();
+				w.focus();
+			}
+		}
+	}
 	
 	function SubClick () {				
 		if (cat1.selectedIndex == 0) alert ("Bitte wähle eine Kategorie!");
